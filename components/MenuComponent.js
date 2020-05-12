@@ -1,34 +1,47 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View, FlatList, TouchableOpacity} from 'react-native';
 import {ListItem} from "react-native-elements";
+import {DISHES} from "../shared/dishes";
 
-function Menu(props){
-    const renderMenuItem = ({item, index}) => {
-        // setNativeProps = (nativeProps) => {
-        //     _root.setNativeProps(nativeProps);
-        //   }
+class Menu extends Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            dishes: DISHES
+        }
+    }
+
+    static navigationOptions = {
+        title: "Menu"
+    }
+
+    render(){
+        const renderMenuItem = ({item, index}) => {
+            return(
+                <ListItem 
+                    Component = {TouchableOpacity}
+                    key = {index}
+                    title = {item.name}
+                    subtitle = {item.description}
+                    leftAvatar = {{ source: require("./images/uthappizza.png")}}
+                    onPress = { () => navigate("Dishdetail", {dishId: item.id})}
+                    bottomDivider
+                    chevron = {false}
+                />
+            );
+        };
+
+        const { navigate} = this.props.navigation;
 
         return(
-            <ListItem 
-                Component = {TouchableOpacity}
-                key = {index}
-                title = {item.name}
-                subtitle = {item.description}
-                leftAvatar = {{ source: require("./images/uthappizza.png")}}
-                onPress = { () => props.onPress(item.id)}
-                bottomDivider
-                chevron = {false}
+            <FlatList 
+                data = {this.state.dishes}
+                renderItem = {renderMenuItem}
+                keyExtractor = { item => item.id.toString()}
             />
         );
-    };
-
-    return(
-        <FlatList 
-            data = {props.dishes}
-            renderItem = {renderMenuItem}
-            keyExtractor = { item => item.id.toString()}
-        />
-    );
+    }
+    
 }
 
 export default Menu;
