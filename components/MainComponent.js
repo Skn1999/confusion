@@ -4,6 +4,7 @@ import Dishdetail from "./DishDetailComponent";
 import Home from "./HomeComponent";
 import {View, Platform} from "react-native";
 import { createStackNavigator, createDrawerNavigator } from "react-navigation";
+import { Icon } from "react-native-elements";
 import "expo";
 
 const MenuNavigator = createStackNavigator({
@@ -24,28 +25,19 @@ const MenuNavigator = createStackNavigator({
 })
 
 const HomeNavigator = createStackNavigator({
-    Home: { screen: Home }
-  }, {
-    navigationOptions: {
-        headerStyle: {
-            backgroundColor: "#fff"
-        },
-        headerTintColor: "#222",
-        headerTitleStyle: {
-            color: "#222"
-        }
-    }
+  Home: { screen: Home }
 });
 
 
 const MainNavigator = createDrawerNavigator({
     Home: 
-      { screen: HomeNavigator,
-        navigationOptions: {
-          title: 'Home',
-          drawerLabel: 'Home'
-        }
+    { 
+      screen: HomeNavigator,
+      navigationOptions: {
+        title: 'Home',
+        drawerLabel: 'Home'
       },
+    },
     Menu: 
       { screen: MenuNavigator,
         navigationOptions: {
@@ -67,6 +59,7 @@ class Main extends Component{
         return(
             <View style= {{ flex: 1, paddingTop: Platform.OS === "ios" ? 0 : 20}}>
                 <MainNavigator /> 
+                
             </View>
         );
     }
