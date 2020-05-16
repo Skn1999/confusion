@@ -8,6 +8,19 @@ import {View, Platform, Text, ScrollView, Image, StyleSheet} from "react-native"
 import { createStackNavigator, createDrawerNavigator, DrawerItems, SafeAreaView } from "react-navigation";
 import { Icon } from "react-native-elements";
 import Constants from 'expo-constants';
+import {connect} from "react-redux"
+import { fetchComments, fetchDishes, fetchLeaders, fetchPromos} from "../redux/ActionCreators"
+
+const mapStateToProps = state => ({})
+
+const mapDispatchToProps = dispatch => {
+  return{
+    fetchComments : () => dispatch(fetchComments()),
+    fetchDishes: () => dispatch(fetchDishes()),
+    fetchLeaders: () => dispatch(fetchLeaders()),
+    fetchPromos: () => dispatch(fetchPromos())
+  }
+}
 
 const MenuNavigator = createStackNavigator({
     Menu: {screen: Menu,
@@ -181,8 +194,13 @@ const MainNavigator = createDrawerNavigator({
 });
 
 class Main extends Component{
-    constructor(props){
-        super(props)
+
+    componentDidMount(){
+      this.props.fetchComments();
+      this.props.fetchDishes();
+      this.props.fetchLeaders();
+      this.props.fetchPromos();
+
     }
 
     render(){
@@ -219,4 +237,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Main;
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

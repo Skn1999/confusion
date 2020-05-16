@@ -23,12 +23,12 @@ export const fetchComments = () => (dispatch) => {
             .catch( err => dispatch(commentsFailed(err)))
 }
 
-addComments = (comments) => ({
+export const addComments = (comments) => ({
     type: ActionTypes.ADD_COMMENTS,
     payload: comments
 })
 
-commentsFailed = (errMess) => ({
+export const commentsFailed = (errMess) => ({
     type: ActionTypes.COMMENTS_FAILED,
     payload: errMess
 })
@@ -57,16 +57,16 @@ export const fetchDishes = () => (dispatch) => {
             .catch( err => dispatch(dishesFailed(err)))
 }
 
-dishesLoading = () => ({
+export const dishesLoading = () => ({
     type: ActionTypes.DISHES_LOADING
 })
 
-addDishes = (dishes) => ({
+export const addDishes = (dishes) => ({
     type: ActionTypes.ADD_DISHES,
     payload: dishes
 })
 
-dishesFailed = (errMess) => ({
+export const dishesFailed = (errMess) => ({
     type: ActionTypes.DISHES_FAILED,
     payload: errMess
 })
@@ -95,16 +95,16 @@ export const fetchPromos = () => (dispatch) => {
             .catch( err => dispatch(promosFailed(err)))
 }
 
-promosLoading = () => ({
+export const promosLoading = () => ({
     type: ActionTypes.PROMOS_LOADING
 })
 
-addPromos = (promos) => ({
+export const addPromos = (promos) => ({
     type: ActionTypes.ADD_PROMOS,
     payload: promos
 })
 
-promosFailed = (errMess) => ({
+export const promosFailed = (errMess) => ({
     type: ActionTypes.PROMOS_FAILED,
     payload: errMess
 })
@@ -133,16 +133,16 @@ export const fetchLeaders = () => (dispatch) => {
             .catch( err => dispatch(leadersFailed(err)))
 }
 
-leadersLoading = () => ({
+export const leadersLoading = () => ({
     type: ActionTypes.LEADERS_LOADING
 })
 
-addLeaders = (leaders) => ({
+export const addLeaders = (leaders) => ({
     type: ActionTypes.ADD_LEADERS,
     payload: leaders
 })
 
-leadersFailed = (errMess) => ({
+export const leadersFailed = (errMess) => ({
     type: ActionTypes.LEADERS_FAILED,
     payload: errMess
 })
