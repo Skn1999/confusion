@@ -23,10 +23,10 @@ function RenderItem(props){
         )
     }
 
-    else if(props.errMess != undefined && props.errMess != null ){
+    else if( props.errMess ){
         return(
             <View>
-                <Text>{props.errMess}</Text>
+                <Text>{"Error occured while loading"}</Text>
             </View>
         )
     }
